@@ -315,19 +315,17 @@ export default function Navbar() {
 
         {/* Mobile Menu Overlay */}
         <div 
-          className={`lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-300 ${
+          className={`lg:hidden fixed inset-0 bg-black/20 backdrop-blur-sm transition-opacity duration-300 z-[-1] ${
             isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
-          style={{ top: '116px' }}
           onClick={() => setIsOpen(false)}
         />
 
         {/* Mobile Menu Panel */}
         <div 
-          className={`lg:hidden fixed left-0 right-0 bg-white shadow-2xl transition-all duration-500 ease-out overflow-hidden ${
+          className={`lg:hidden bg-white shadow-2xl transition-all duration-500 ease-out overflow-hidden ${
             isOpen ? 'max-h-[calc(100vh-116px)] opacity-100' : 'max-h-0 opacity-0'
           }`}
-          style={{ top: '116px' }}
         >
           <div className="max-h-[calc(100vh-116px)] overflow-y-auto">
             <div className="p-4 space-y-1">
