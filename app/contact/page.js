@@ -13,9 +13,31 @@ export default function ContactPage() {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    try {
+      await fetch('/api/telegram', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'Contact',
+          data: {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || 'Not provided',
+            company: formData.company || 'Not provided',
+            subject: formData.subject,
+            message: formData.message,
+          }
+        })
+      });
+    } catch (err) {
+      console.error(err);
+    }
+    setLoading(false);
     setSubmitted(true);
   };
 
@@ -224,12 +246,22 @@ export default function ContactPage() {
 
                     <button
                       type="submit"
-                      className="w-full py-4 bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white font-semibold rounded-xl hover:from-[#B91C1C] hover:to-[#991B1B] transition-all text-lg flex items-center justify-center space-x-2 shadow-lg shadow-red-100"
+                      disabled={loading}
+                      className="w-full py-4 bg-gradient-to-r from-[#DC2626] to-[#B91C1C] text-white font-semibold rounded-xl hover:from-[#B91C1C] hover:to-[#991B1B] transition-all text-lg flex items-center justify-center space-x-2 shadow-lg shadow-red-100 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                      </svg>
-                      <span>Send Message</span>
+                      {loading ? (
+                        <>
+                          <svg className="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+                          <span>Sending...</span>
+                        </>
+                      ) : (
+                        <>
+                          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                          </svg>
+                          <span>Send Message</span>
+                        </>
+                      )}
                     </button>
                   </form>
                 </>

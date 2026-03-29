@@ -4,19 +4,6 @@ export default function Footer() {
   return (
     <footer className="bg-[#0F172A] text-white overflow-hidden">
 
-      {/* CTA Strip */}
-      <div className="bg-[#DC2626]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-lg sm:text-xl font-semibold tracking-tight text-center sm:text-left">
-            Ready to move? Let&apos;s talk logistics.
-          </p>
-          <Link href="/contact"
-            className="shrink-0 bg-white text-[#DC2626] font-semibold text-sm px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
-            Get a Quote →
-          </Link>
-        </div>
-      </div>
-
       {/* Main */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-12 gap-y-12 gap-x-8">

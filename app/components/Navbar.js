@@ -169,7 +169,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <nav ref={navRef} className="w-full navbar-nav">
+      <nav ref={navRef} className={`w-full navbar-nav ${isOpen ? 'bg-white' : ''}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo */}
@@ -324,7 +324,7 @@ export default function Navbar() {
 
         {/* Mobile Menu Panel */}
         <div 
-          className={`lg:hidden fixed left-0 right-0 bg-white border-t border-gray-100 shadow-2xl transition-all duration-500 ease-out overflow-hidden ${
+          className={`lg:hidden fixed left-0 right-0 bg-white shadow-2xl transition-all duration-500 ease-out overflow-hidden ${
             isOpen ? 'max-h-[calc(100vh-116px)] opacity-100' : 'max-h-0 opacity-0'
           }`}
           style={{ top: '116px' }}

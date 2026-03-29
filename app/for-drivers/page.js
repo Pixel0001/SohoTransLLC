@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import DriverApplyForm from '../components/DriverApplyForm';
 
 export const metadata = {
   title: 'For Drivers | SoHo Trans LLS',
@@ -44,35 +45,7 @@ export default function ForDriversPage() {
               </div>
             </div>
             <div className="hidden lg:block">
-              <div className="bg-white rounded-2xl p-8 shadow-2xl">
-                <h3 className="text-2xl font-bold text-[#1F2937] mb-6">Quick Apply</h3>
-                <div className="space-y-4">
-                  <input
-                    type="text"
-                    placeholder="Full Name"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DC2626] focus:border-transparent"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Phone Number"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DC2626] focus:border-transparent"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Email Address"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DC2626] focus:border-transparent"
-                  />
-                  <select className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#DC2626] focus:border-transparent">
-                    <option value="">Years of Experience</option>
-                    <option value="1">1-2 Years</option>
-                    <option value="3">3-5 Years</option>
-                    <option value="5">5+ Years</option>
-                  </select>
-                  <button className="w-full py-4 bg-[#DC2626] text-white font-semibold rounded-lg hover:bg-[#B91C1C] transition-colors">
-                    Submit Application
-                  </button>
-                </div>
-              </div>
+              <DriverApplyForm />
             </div>
           </div>
         </div>
